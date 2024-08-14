@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query'
-import { githubApi } from '../../../api'
-import { sleep } from '../../../utils'
+import { githubApi } from '../../api'
+import { sleep } from '../../utils'
 
 const getLabels = async (): Promise<unknown> => {
 	await sleep()

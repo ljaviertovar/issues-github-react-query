@@ -1,5 +1,5 @@
-import { IssueList } from '../components/IssueList'
-import { LabelPicker } from '../components/LabelPicker'
+import { IssueList } from '../IssueList'
+import { LabelPicker } from '../LabelPicker'
 
 export const ListView = () => {
 	return (

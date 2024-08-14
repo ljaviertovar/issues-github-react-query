@@ -1,8 +1,7 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 
+import { IssuesPage } from '../pages'
 import { ListView, IssueView } from '../components/issues/views'
-
-import IssuesPage from '../pages/IssuesPage'
 
 export const router = createBrowserRouter([
 	{
