@@ -1,6 +1,11 @@
 import { IssueItem } from './IssueItem'
+import useIssues from './hooks/useIssues'
 
 export const IssueList = () => {
+	const { issuesQuery } = useIssues()
+
+	console.log(issuesQuery.data)
+
 	return (
 		<>
 			{/* Botones de All, Open, Closed */}

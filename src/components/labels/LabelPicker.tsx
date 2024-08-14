@@ -1,5 +1,5 @@
 import Spinner from '../Spinner'
-import useLabels from './hooks'
+import useLabels from './hooks/useLabels'
 
 export const LabelPicker = () => {
 	const { labelsQuery } = useLabels()
