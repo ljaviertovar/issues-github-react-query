@@ -1,5 +1,5 @@
 import { useQuery } from '@tanstack/react-query'
-import { getIssue } from '../actions'
+import { getIssue, getIssueComments } from '../actions'
 
 export default function useIssue(issueNumber: number) {
 	const issueQuery = useQuery({
@@ -8,7 +8,12 @@ export default function useIssue(issueNumber: number) {
 		staleTime: 1000 * 60 * 60,
 	})
 
-	console.log(issueQuery.data)
+	const commentsQuery = useQuery({
+		queryKey: ['issues', issueQuery.data?.number, 'comments'],
+		queryFn: () => getIssueComments(issueQuery.data!.number),
+		staleTime: 1000 * 60,
+		enabled: issueQuery.data !== undefined,
+	})
 
-	return { issueQuery }
+	return { issueQuery, commentsQuery }
 }
