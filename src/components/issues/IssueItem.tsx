@@ -1,6 +1,7 @@
-import { FiInfo, FiMessageSquare, FiCheckCircle } from 'react-icons/fi'
 import { useNavigate } from 'react-router-dom'
+
 import { GitHubIssue } from './interfaces'
+import { FiInfo, FiMessageSquare, FiCheckCircle } from 'react-icons/fi'
 
 interface Props {
 	issue: GitHubIssue
