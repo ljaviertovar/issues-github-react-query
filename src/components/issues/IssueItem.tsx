@@ -1,19 +1,34 @@
 import { useNavigate } from 'react-router-dom'
+import { useQueryClient } from '@tanstack/react-query'
 
 import { GitHubIssue } from './interfaces'
 import { FiInfo, FiMessageSquare, FiCheckCircle } from 'react-icons/fi'
+
+import { getIssue } from './actions'
 
 interface Props {
 	issue: GitHubIssue
 }
 
 export const IssueItem = ({ issue }: Props) => {
+	const queryClient = useQueryClient()
 	const navigate = useNavigate()
 
 	const { title, number, state, user, comments } = issue
 
+	const prefetchData = async () => {
+		queryClient.prefetchQuery({
+			queryKey: ['issue', number],
+			queryFn: () => getIssue(number),
+			staleTime: 1000 * 60,
+		})
+	}
+
 	return (
-		<div className='animate-fadeIn flex items-center px-2 py-3 mb-5 border rounded-md bg-slate-900 hover:bg-slate-800'>
+		<div
+			className='animate-fadeIn flex items-center px-2 py-3 mb-5 border rounded-md bg-slate-900 hover:bg-slate-800'
+			onMouseEnter={prefetchData}
+		>
 			{state === 'open' ? (
 				<FiCheckCircle size={30} color='green' />
 			) : (
