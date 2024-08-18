@@ -37,7 +37,9 @@ export const IssueView = () => {
 			<IssueComment issue={issueQuery.data} />
 
 			{commentsQuery.isLoading ? (
-				<Spinner />
+				<div className='flex justify-center items-center h-52'>
+					<Spinner />
+				</div>
 			) : (
 				commentsQuery.data?.map(comment => <IssueComment key={comment.id} issue={comment} />)
 			)}

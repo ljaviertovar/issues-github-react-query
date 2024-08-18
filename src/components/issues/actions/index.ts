@@ -1,7 +1,7 @@
 import { githubApi } from '../../../api'
 import { sleep } from '../../../utils'
 
-import { GitHubIssue, GitHubLabel } from '../interfaces'
+import { GitHubIssue, GitHubLabel, State } from '../interfaces'
 
 export const getLabels = async (): Promise<GitHubLabel[]> => {
 	await sleep()
@@ -11,10 +11,22 @@ export const getLabels = async (): Promise<GitHubLabel[]> => {
 	return data
 }
 
-export const getIssues = async (): Promise<GitHubIssue[]> => {
+export const getIssues = async (selectedState: State, selectedLabels: string[]): Promise<GitHubIssue[]> => {
 	await sleep()
 
-	const { data } = await githubApi.get<GitHubIssue[]>('/issues')
+	const params = new URLSearchParams()
+
+	if (selectedState !== State.All) {
+		params.append('state', selectedState)
+	}
+
+	if (selectedLabels.length > 0) {
+		params.append('labels', selectedLabels.join(','))
+	}
+
+	const { data } = await githubApi.get<GitHubIssue[]>('/issues', {
+		params,
+	})
 
 	return data
 }

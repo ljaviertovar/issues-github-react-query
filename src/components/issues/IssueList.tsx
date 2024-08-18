@@ -1,22 +1,39 @@
 import { IssueItem } from './IssueItem'
-import { GitHubIssue } from './interfaces'
+import { GitHubIssue, State } from './interfaces'
 
 interface Props {
 	issues: GitHubIssue[]
+	selectedState: State
+	onSelectedStateChange: (state: State) => void
 }
 
-export const IssueList = ({ issues }: Props) => {
+export const IssueList = ({ issues, selectedState, onSelectedStateChange }: Props) => {
 	return (
 		<>
 			<div className='flex gap-4'>
-				<button className='btn active'>All</button>
-				<button className='btn'>Open</button>
-				<button className='btn'>Closed</button>
+				<button
+					onClick={() => onSelectedStateChange(State.All)}
+					className={`btn ${selectedState === State.All ? 'active' : ''} `}
+				>
+					All
+				</button>
+				<button
+					onClick={() => onSelectedStateChange(State.Open)}
+					className={`btn ${selectedState === State.Open ? 'active' : ''} `}
+				>
+					Open
+				</button>
+				<button
+					onClick={() => onSelectedStateChange(State.Close)}
+					className={`btn ${selectedState === State.Close ? 'active' : ''} `}
+				>
+					Closed
+				</button>
 			</div>
 
 			<div className='mt-4'>
 				{issues.map(issue => (
-					<IssueItem issue={issue} key={issue.id} />
+					<IssueItem key={issue.id} issue={issue} />
 				))}
 			</div>
 		</>
