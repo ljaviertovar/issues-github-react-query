@@ -44,5 +44,5 @@ pre {
 }
 
 .selected-label {
-  @apply bg-slate-700 shadow-sm transition-all shadow-white;
+  @apply bg-slate-300 shadow-sm transition-all shadow-white text-slate-900 hover:text-white;
 }

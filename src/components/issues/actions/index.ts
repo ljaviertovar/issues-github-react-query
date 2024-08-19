@@ -11,7 +11,11 @@ export const getLabels = async (): Promise<GitHubLabel[]> => {
 	return data
 }
 
-export const getIssues = async (selectedState: State, selectedLabels: string[]): Promise<GitHubIssue[]> => {
+export const getIssues = async (
+	selectedState: State,
+	selectedLabels: string[],
+	page: number
+): Promise<GitHubIssue[]> => {
 	await sleep()
 
 	const params = new URLSearchParams()
@@ -23,6 +27,9 @@ export const getIssues = async (selectedState: State, selectedLabels: string[]):
 	if (selectedLabels.length > 0) {
 		params.append('labels', selectedLabels.join(','))
 	}
+
+	params.append('page', `${page}`)
+	params.append('per_page', '5')
 
 	const { data } = await githubApi.get<GitHubIssue[]>('/issues', {
 		params,

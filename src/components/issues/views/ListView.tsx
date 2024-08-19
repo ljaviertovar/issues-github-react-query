@@ -12,7 +12,7 @@ export const ListView = () => {
 	const [selectedState, setSelectedState] = useState<State>(State.All)
 	const [selectedLabels, setSelectedLabels] = useState<string[]>([])
 
-	const { issuesQuery } = useIssues({
+	const { issuesQuery, page, nextPage, prevPage } = useIssues({
 		selectedState,
 		selectedLabels,
 	})
@@ -35,7 +35,21 @@ export const ListView = () => {
 						<Spinner />
 					</div>
 				) : (
-					<IssueList issues={issues} onSelectedStateChange={setSelectedState} selectedState={selectedState} />
+					<>
+						<IssueList issues={issues} onSelectedStateChange={setSelectedState} selectedState={selectedState} />
+
+						<div className='flex justify-between items-center'>
+							<button onClick={prevPage} className='p-2 bg-blue-500 rounded-md hover:bg-blue-700 transition-all'>
+								Anteriores
+							</button>
+
+							<span>{page}</span>
+
+							<button onClick={nextPage} className='p-2 bg-blue-500 rounded-md hover:bg-blue-700 transition-all'>
+								Siguientes
+							</button>
+						</div>
+					</>
 				)}
 			</div>
 
