@@ -4,7 +4,7 @@ import { useQueryClient } from '@tanstack/react-query'
 import { GitHubIssue } from './interfaces'
 import { FiInfo, FiMessageSquare, FiCheckCircle } from 'react-icons/fi'
 
-import { getIssue } from './actions'
+// import { getIssue } from './actions'
 
 interface Props {
 	issue: GitHubIssue
@@ -16,13 +16,13 @@ export const IssueItem = ({ issue }: Props) => {
 
 	const { title, number, state, user, comments } = issue
 
-	const prefetchData = async () => {
-		queryClient.prefetchQuery({
-			queryKey: ['issue', number],
-			queryFn: () => getIssue(number),
-			staleTime: 1000 * 60,
-		})
-	}
+	// const prefetchData = async () => {
+	// 	queryClient.prefetchQuery({
+	// 		queryKey: ['issue', number],
+	// 		queryFn: () => getIssue(number),
+	// 		staleTime: 1000 * 60,
+	// 	})
+	// }
 
 	const presetData = async () => {
 		queryClient.setQueryData(['issue', number], issue, {
@@ -42,7 +42,7 @@ export const IssueItem = ({ issue }: Props) => {
 			)}
 
 			<div className='flex flex-col flex-grow px-2'>
-				<a onClick={() => navigate(`/issues/issue/${number}`)} className='hover:underline'>
+				<a onClick={() => navigate(`/issues/issue/${number}`)} className='hover:underline cursor-pointer'>
 					{title}
 				</a>
 				<span className='text-gray-500'>

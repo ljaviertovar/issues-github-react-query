@@ -23,7 +23,7 @@ export const LabelPicker = ({ selectedLabels, onLabelSelected }: Props) => {
 	}
 
 	return (
-		<div className='flex flex-wrap gap-2 justify-center'>
+		<div className='flex flex-wrap gap-2 justify-start'>
 			{labelsQuery.data?.map(label => (
 				<span
 					key={label.id}

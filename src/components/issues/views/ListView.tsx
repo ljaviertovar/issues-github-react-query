@@ -36,7 +36,7 @@ export const ListView = () => {
 					</div>
 				) : (
 					<>
-						<IssueList issues={issues} onSelectedStateChange={setSelectedState} selectedState={selectedState} />
+						<IssueList issues={issues} />
 
 						<div className='flex justify-between items-center'>
 							<button onClick={prevPage} className='p-2 bg-blue-500 rounded-md hover:bg-blue-700 transition-all'>

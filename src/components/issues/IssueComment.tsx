@@ -14,8 +14,9 @@ export const IssueComment = ({ issue }: Props) => {
 					<img src={issue.user.avatar_url} alt='User Avatar' className='w-8 h-8 rounded-full' />
 					<span className='mx-2'>{issue.user.login} commented</span>
 				</div>
-				<div className='p-4 bg-gray-700 text-white'></div>
-				<ReactMarkdown>{issue.body}</ReactMarkdown>
+				<div className='p-4 bg-gray-700 text-white'>
+					<ReactMarkdown>{issue.body}</ReactMarkdown>
+				</div>
 			</div>
 		</div>
 	)
