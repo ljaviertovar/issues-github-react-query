@@ -9,7 +9,7 @@ import useIssues from '../hooks/useIssues'
 import { State } from '../interfaces'
 
 export const ListView = () => {
-	const [selectedState, setSelectedState] = useState<State>(State.All)
+	const [selectedState] = useState<State>(State.All)
 	const [selectedLabels, setSelectedLabels] = useState<string[]>([])
 
 	const { issuesQuery, page, nextPage, prevPage } = useIssues({
