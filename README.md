@@ -1,17 +1,29 @@
-# GitHub Issues - TanStack Query
+#  ![favicon-32x32](https://github.com/user-attachments/assets/ead88e99-f67f-4091-a316-4733d7888413) Next.js issue tracking
 
-Repositorio del proyecto del curso sobre TanStack Query con React
+![image](https://github.com/user-attachments/assets/8ea133b2-f532-4d90-bbc5-193327abc0c6)
 
-## Dev
 
-1. Clonar repositorio
-2. Instalar dependencias `npm install`
-3. Iniciar servidor de desarrollo `npm run dev`
+### Front-end
+* React
+* TanStack Query
+* React Router 6+
+* Tailwindcss
 
-## Tecnologías usadas
+### Installig
 
-- React
-- TanStack Query
-- TailwindCSS
-- React Router 6+
-- React Icons
+```
+pnpm run install
+```
+
+### Environment .env file
+
+```
+# https://github.com/settings/tokens?type=beta
+VITE_GITHUB_TOKEN=
+```
+
+### Running app
+
+```
+pnpm run dev
+```
